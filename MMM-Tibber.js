@@ -504,7 +504,7 @@ Module.register("MMM-Tibber", {
     const accumulatedPower = document.getElementById(
       "acc-power-" + this.identifier + "-value"
     );
-    accumulatedPower.innerHTML = Math.round(subData.accumulatedConsumption);
+    accumulatedPower.innerHTML = subData.accumulatedConsumption.toFixed(1);
 
     const accumulatedPowerUnit = document.getElementById(
       "acc-power-" + this.identifier + "-unit"
@@ -515,13 +515,13 @@ Module.register("MMM-Tibber", {
     const accumulatedCost = document.getElementById(
       "acc-cost-" + this.identifier + "-value"
     );
-    accumulatedCost.innerHTML = Math.round(
+    accumulatedCost.innerHTML = (
       subData.accumulatedCost +
         (this.config.includeAdditionalCostsInPrice
           ? this.sumAdditionalCosts(this.config) *
             subData.accumulatedConsumption
           : 0)
-    );
+    ).toFixed(2);
 
     const accumulatedCostUnit = document.getElementById(
       "acc-cost-" + this.identifier + "-unit"
